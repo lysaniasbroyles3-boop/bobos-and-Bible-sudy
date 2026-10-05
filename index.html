@@ -1,0 +1,255 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOBOS | Bible Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="logo">BOBOS</div>
+
+    <nav>
+      <button onclick="showPage('home')">Home</button>
+      <button onclick="showPage('bible')">Bible Study</button>
+      <button onclick="showPage('progress')">Progress</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HOME -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="badge">BOBOS STUDY CENTER</div>
+
+        <h1>Grow Your Faith.<br><span>Level Up.</span></h1>
+
+        <p>
+          Read Scripture, answer questions, review what you learned,
+          and earn XP as you complete your Bible studies.
+        </p>
+
+        <button class="primary" onclick="showPage('bible')">
+          Start Bible Study →
+        </button>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">📖</div>
+          <h3>Read</h3>
+          <p>Study today's Scripture.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>Answer</h3>
+          <p>Test what you remember.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">⭐</div>
+          <h3>Level Up</h3>
+          <p>Earn XP by completing studies.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- BIBLE STUDY -->
+    <section id="bible" class="page">
+
+      <div class="study-header">
+        <div>
+          <div class="badge">BIBLE STUDY #3</div>
+          <h1>Walk in Wisdom</h1>
+        </div>
+
+        <div class="xp-box">
+          <span>XP</span>
+          <strong id="xpDisplay">0</strong>
+        </div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div id="step1" class="study-card">
+
+        <h2>📖 Read the Verse</h2>
+
+        <div class="verse">
+          <p>
+            "Trust in the Lord with all your heart and lean not on your
+            own understanding; in all your ways submit to him, and he
+            will make your paths straight."
+          </p>
+
+          <strong>Proverbs 3:5–6</strong>
+        </div>
+
+        <p class="lesson">
+          This passage teaches us to trust God instead of depending only
+          on what we think we understand. Following God means allowing
+          Him to guide our choices and our path.
+        </p>
+
+        <button class="primary" onclick="startQuestions()">
+          Continue →
+        </button>
+      </div>
+
+
+      <!-- STEP 2 -->
+      <div id="step2" class="study-card hidden">
+
+        <div class="progress-label">
+          Question <span id="questionNumber">1</span> of 3
+        </div>
+
+        <div class="progress-bar">
+          <div id="questionProgress"></div>
+        </div>
+
+        <h2 id="questionText"></h2>
+
+        <div id="answers"></div>
+
+        <p id="feedback"></p>
+
+        <button
+          id="nextButton"
+          class="primary hidden"
+          onclick="nextQuestion()">
+          Next Question →
+        </button>
+
+      </div>
+
+
+      <!-- STEP 3 -->
+      <div id="step3" class="study-card hidden">
+
+        <div class="complete-icon">🎉</div>
+
+        <h2>Study Complete!</h2>
+
+        <p>
+          Great job! You finished Bible Study #3.
+        </p>
+
+        <div class="score-box">
+          <span>Your Score</span>
+          <strong id="scoreDisplay">0/3</strong>
+        </div>
+
+        <div class="earned">
+          <span>⭐ XP Earned</span>
+          <strong id="earnedXP">+0 XP</strong>
+        </div>
+
+        <button class="primary" onclick="showReview()">
+          Review Study →
+        </button>
+
+      </div>
+
+
+      <!-- REVIEW -->
+      <div id="review" class="study-card hidden">
+
+        <div class="badge">REVIEW</div>
+
+        <h2>What You Learned</h2>
+
+        <div class="review-item">
+          <strong>📖 Trust God</strong>
+          <p>
+            Proverbs 3:5–6 teaches us to trust God instead of relying
+            only on our own understanding.
+          </p>
+        </div>
+
+        <div class="review-item">
+          <strong>🧭 Let God Guide You</strong>
+          <p>
+            We can look to God for direction when making decisions.
+          </p>
+        </div>
+
+        <div class="review-item">
+          <strong>⭐ Keep Growing</strong>
+          <p>
+            Studying Scripture regularly can help you continue growing
+            in wisdom and faith.
+          </p>
+        </div>
+
+        <button class="primary" onclick="showPage('progress')">
+          See My Progress →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+    <section id="progress" class="page">
+
+      <div class="hero small">
+
+        <div class="badge">YOUR PROGRESS</div>
+
+        <h1>Keep Going! ⭐</h1>
+
+        <p>Your BOBOS Bible Study progress.</p>
+
+      </div>
+
+      <div class="stats">
+
+        <div class="stat-card">
+          <span>LEVEL</span>
+          <strong id="levelDisplay">1</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>TOTAL XP</span>
+          <strong id="totalXP">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>STUDIES</span>
+          <strong id="studiesComplete">0</strong>
+        </div>
+
+      </div>
+
+      <div class="study-card">
+
+        <h2>Level Progress</h2>
+
+        <div class="big-progress">
+          <div id="levelProgress"></div>
+        </div>
+
+        <p id="levelText">0 / 100 XP to Level 2</p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 BOBOS • Bible Study</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
